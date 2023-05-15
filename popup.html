@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script defer src="./content.js"></script>
+  <!-- addbootsrtap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <title>Document</title>
+  <style>
+    * {
+      font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', "sans-serif";
+    }
+
+    .custom-popup {
+      width: 20rem;
+    }
+
+    .img {
+      display: inline;
+      width: 2rem;
+      height: 2rem;
+    }
+  </style>
+  <!-- <script>
+    let login = document.GetElementById("login");
+    let signup = document.GetElementById("signup");
+    let disease = "<?php echo isset($_SESSION['disease']) ? $_SESSION['disease'] : '' ?>";
+    if (disease === "" || disease === null) {
+      login.style.display = "block";
+      signup.style.display = "block";
+    }
+
+
+  </script> -->
+</head>
+<!-- <div  style="background-color: blue;"> -->
+
+<body class="container-fluid">
+  <div class="info custom-popup">
+    <h4 class="h4 text-secondary">Chroma</h4>
+    <p class="text-secondary">Chroma is a chrome extension that will help color blind people distinguish between the
+      colors they cannot distinguish because of their color vision deficiency. We have worked to cater the color vision
+      deficiency for
+    <ul class="text-secondary">
+      <li>Protonopia</li>
+      <li>Deutronopia</li>
+      <li>Tritanopia</li>
+    </ul>
+    </p>
+    <div class="info p-1">
+      <div class="login my-2 ">
+        <p class="text-secondary"> If you want to access the Chroma - Exetension for Color Deficiency Aid, Login In to
+          your existing account.</p>
+        <a target="_blank" href="/login.html" class="btn btn-primary d-block mx-auto w-25">Login</a>
+      </div>
+
+      <div class="sign-up ">
+        <p class="text-secondary">
+          If you don't have an account, Sign Up to create a new account.
+        </p>
+        <a href="signup.html" target="_blank" class="btn btn-primary d-block mx-auto w-25">Sign Up</a>
+      </div>
+    </div>
+
+    <div class="protonopia d-none">
+      <p class="text-secondary">
+        You have Protonopia, which is color deficiency to differentiate red shades, then you are not able to see the red
+        shades properly. So, we have applied filters on all the elements of red color or their combinations with green
+        and blue color which protonopia affected people are unable to distinguish from real shades. The details of these
+        shades are as follow:
+      </p>
+      <ul>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red:</span>
+            <span>
+              Red Only
+              <!-- The protonopia color deficient can never be able to distinguish red. They always mixes the shades between red and green. SO the shades that include only red which is  -->
+              <span class="font-weight-bold ">RGB(R,0,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative end-0"><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red & Green:</span>
+            <span>Red and Green Combination: Brown and Yellow Shades
+              <span class="font-weight-bold ">RGB(R,G,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Green:</span>
+            <span>Green Only
+              <span class="font-weight-bold ">RGB(0,G,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red & Blue:</span>
+            <span>Red and Blue Combination: Purple and Pink Shades
+              <span class="font-weight-bold ">RGB(R,0,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Green & Blue:</span>
+            <span>Blue and Green Combination: Teal, Light greenish blue shades
+              <span class="font-weight-bold ">RGB(0,G,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red, Green & Blue:</span>
+            <span>Red, Green and Blue Combination:Red, Blue and Green combinations that are not distinguishable.
+              <span class="font-weight-bold ">RGB(R,G,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="duetronopia d-none">
+      <p class="text-secondary">
+        You have Deutronopia, which is color deficiency to differentiate green shades, then you are not able to see the
+        green shades properly. So, we have applied filters on all the elements of green color or their combinations with
+        red and blue color which protonopia affected people are unable to distinguish from real shades. The details of
+        these shades are as follow:
+      </p>
+      <ul>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Green:</span>
+            <span>
+              Green Only
+              <!-- The protonopia color deficient can never be able to distinguish red. They always mixes the shades between red and green. SO the shades that include only red which is  -->
+              <span class="font-weight-bold ">RGB(0,G,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative end-0"><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red & Green:</span>
+            <span>Red and Green Combination: Brown and Yellow Shades
+              <span class="font-weight-bold ">RGB(R,G,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red:</span>
+            <span>Red Only
+              <span class="font-weight-bold ">RGB(R,0,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red & Blue:</span>
+            <span>Red and Blue Combination: Purple and Pink Shades
+              <span class="font-weight-bold ">RGB(R,0,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Green & Blue:</span>
+            <span>Blue and Green Combination: Teal, Light greenish blue shades
+              <span class="font-weight-bold ">RGB(0,G,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red, Green & Blue:</span>
+            <span>Reg, Green and Blue Combination:Red, Blue and Green combinations that are not distinguishable.
+              <span class="font-weight-bold ">RGB(R,G,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tritanopia d-none">
+      <p class="text-secondary">
+        You have Tritanopia, which is color deficiency to differentiate blue shades, then you are not able to see the
+        Blue shades properly. So, we have applied filters on all the elements of Blue color or their combinations with
+        red and blue color which tritanopia affected people are unable to distinguish from real shades. The details of
+        these shades are as follow:
+      </p>
+      <ul>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Green:</span>
+            <span>
+              Green Only
+              <!-- The protonopia color deficient can never be able to distinguish red. They always mixes the shades between red and green. SO the shades that include only red which is  -->
+              <span class="font-weight-bold ">RGB(0,G,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative end-0"><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red & Green:</span>
+            <span>Red and Green Combination: Brown and Yellow Shades
+              <span class="font-weight-bold ">RGB(R,G,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red:</span>
+            <span>Red Only
+              <span class="font-weight-bold ">RGB(R,0,0)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red & Blue:</span>
+            <span>Red and Blue Combination: Purple and Pink Shades
+              <span class="font-weight-bold ">RGB(R,0,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Green & Blue:</span>
+            <span>Blue and Green Combination: Teal, Light greenish blue shades
+              <span class="font-weight-bold ">RGB(0,G,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+        <li class="d-flex justify-content-between p-2">
+          <div class="m-0 p-0">
+            <span class=" font-weight-bold text-secondary">Red, Green & Blue:</span>
+            <span>Reg, Green and Blue Combination:Red, Blue and Green combinations that are not distinguishable.
+              <span class="font-weight-bold ">RGB(R,G,B)</span></span>
+          </div>
+          <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</body>
+
+</html>

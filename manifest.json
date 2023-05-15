@@ -1,0 +1,37 @@
+{
+    "name": "Chroma",
+    "version": "1.0",
+    "description": "help distiguish between different types of colors",
+    "permissions": [
+        "tabs",
+        "identity"
+    ],
+    "host_permissions": [
+        "*://*/"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "content.js",
+                "redirect.js"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "assets/ext-icon.png",
+            "24": "assets/ext-icon.png",
+            "32": "assets/ext-icon.png"
+        },
+        "default_title": "Chroma"
+    },
+    "manifest_version": 3
+}

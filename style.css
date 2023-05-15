@@ -1,0 +1,39 @@
+.diagonal-text {
+    background: linear-gradient(45deg, #ccc 25%, transparent 25%, transparent 75%, #ccc 75%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* .diagonal-lines {
+    background: linear-gradient(45deg,  transparent 25%, transparent 75%, #ccc 75%);
+    background-size: 20px 20px;
+  } */
+  
+  .diagonal-lines {
+  /* background: linear-gradient(to bottom, #b42929 1px, transparent 1px  ); */
+/* background-size: 100% 4px;  */
+/* Adjust the 10px value to change the line width */
+border:solid 1px;
+    /* background-color: rgb(210, 137, 226); */
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 15px,
+      #ccc 10px,
+      #ccc 20px
+        ),
+      repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 15px,
+        #ccc 10px,
+        #ccc 20px
+      );
+/* background-size: 100% 4  px;  */
+      
+  }
+
+  .button{
+    background-color: aquamarine;
+
+  }

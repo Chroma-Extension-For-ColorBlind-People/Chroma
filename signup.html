@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Sign Up Page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #a6bace;
+        }
+
+        .row {
+            background-color: white;
+            border-radius: 30px;
+            box-shadow: 15px 15px 20px grey;
+        }
+
+        .loginImg {
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        .btn1 {
+            border: none;
+            outline: none;
+            height: 50px;
+            width: 100%;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: black;
+        }
+
+        .btn1:hover {
+            color: black;
+            border: 2px solid black;
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="Form mt-5 mx-4">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-5">
+                    <img src="cwh.jfif" class="img-fluid loginImg" alt="loginImg">
+                </div>
+                <div class="col-lg-7 py-5 px-5">
+                    <h1 class="font-weight-bold py-2">Sign Up</h1>
+                    <h4>Create your account</h4>
+                    <form action="http://chroma.ap-1.evennode.com" id="loginPage" method="POST">
+                        <div class="form-row">
+                            <div class="col-lg-7 py-2">
+                                <select class="form-control" name="disease" id="disease">
+                                    <option disabled selected>Select Disease</option>
+                                    <option>Protonopia/Red-Blind</option>
+                                    <option>Deuternopic/Green-Blind</option>
+                                    <option>Tritanopia/Blue-Blind</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7 py-2">
+                                <input type="text" class="form-control" placeholder="Enter name" name="name" id="name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7 py-2"><input type="email" class="form-control"
+                                    placeholder="Enter email" name="email" id="email">
+                                <input type="hidden" name="url" id="urlField">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7 py-2">
+                                <input type="password" class="form-control" placeholder="Enter password" name="password"
+                                    id="password">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-7 py-2">
+                                <button type="submit" class="btn1" id="loginButton">Create Account</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="redirect.js"></script>
+</body>
+
+</html>
