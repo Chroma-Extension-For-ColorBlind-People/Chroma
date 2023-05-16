@@ -32,6 +32,7 @@
             "32": "assets/ext-icon.png"
         },
         "default_title": "Chroma"
+
     },
     "manifest_version": 3
 }

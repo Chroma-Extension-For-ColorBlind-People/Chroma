@@ -5,10 +5,32 @@
 // script2.src = "test.js";
 // // Append the script element to the document's body
 // document.body.appendChild(script2);
-let data = JSON.parse(localStorage.getItem('mydata'));
-console.log("data", data);
+// let data = JSON.parse(localStorage.getItem('mydata'));
+// console.log("data", data);
 // console.log("Data:", data);
+// const xhr = new XMLHttpRequest();
+// xhr.open('GET', 'test.js');
+// xhr.onload = () => eval(xhr.responseText);
+// xhr.send();
+
 ///////////////////////////////////////
+
+// chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+//   if (request.message === "givedata") {
+//       console.log("Received data from background:", request.data);
+      
+//       // Do something with the data
+      
+//       // Send a response back to the popup
+//       sendResponse({message: "Data received"});
+//   }
+// });
+let data = ''
+chrome.storage.sync.get(['myData'], function(result) {
+  console.log('Data retrieved: ', result.myData);
+  data = result.myData;
+});
+
 
 const edited = new Set();
 var condition = Array();
@@ -196,6 +218,7 @@ function clear(){
     sender,
     sendResponse
   ) {
+    if(data){
     // let disease = localStorage.getItem("disease");
     // let name = localStorage.getItem("name");
     // let email = localStorage.getItem("email");
@@ -321,7 +344,9 @@ function clear(){
       sendResponse({ message: "hi" });
     }
     return true;
+  }
   });
+  
 })();
 console.log("hello from content.js");
 

@@ -8,7 +8,7 @@ function showAlert(message) {
   alert(message);
 }
 function changepopup(data) {
-    console.log(data);
+  console.log(data);
   if (data.disease === "Protonopia") {
     console.log("Protonopia");
     var popup = document.querySelector(".protonopia");
@@ -28,12 +28,19 @@ document.querySelector("form").addEventListener("submit", function (event) {
       var data = JSON.parse(this.responseText);
       showAlert(data.msg);
       localStorage.setItem("mydata", JSON.stringify(data));
+
+      chrome.runtime.sendMessage(
+        { message: "sendData", data: data },
+        function (response) {
+          console.log("Response from background script:", response);
+        }
+      );
       // localStorage.setItem("disease", data.disease);
       // localStorage.setItem("name", data.name);
       ///////////////////////////////////////////////////////////
       // var script2 = document.createElement("script");
       // // Set the source of the script to script2.js
-      // script2.src = "popup.js";
+      // script2.src = "test.js";
       // // Append the script element to the document's body
       // document.body.appendChild(script2);
       ////////////////////////////////////////////////////

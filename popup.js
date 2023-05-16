@@ -34,6 +34,8 @@ function changepopup(data) {
 let dataaaaa = JSON.parse(localStorage.getItem("mydata"));
 console.log("data:", dataaaaa);
 if (dataaaaa) {
+ 
+
   let disease = dataaaaa.disease;
   let name = dataaaaa.name;
   let email = dataaaaa.email;
