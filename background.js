@@ -8,7 +8,5 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       }
     });
   }
-  chrome.identity.getProfileUserInfo(function (userInfo) {
-    console.log(userInfo);
-  });
+  
 });

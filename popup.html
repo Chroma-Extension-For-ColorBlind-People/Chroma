@@ -25,24 +25,20 @@
       width: 2rem;
       height: 2rem;
     }
-  </style>
-  <!-- <script>
-    let login = document.GetElementById("login");
-    let signup = document.GetElementById("signup");
-    let disease = "<?php echo isset($_SESSION['disease']) ? $_SESSION['disease'] : '' ?>";
-    if (disease === "" || disease === null) {
-      login.style.display = "block";
-      signup.style.display = "block";
+
+    .protonopia, .duetronopia, .tritanopia {
+      display: none;
     }
 
+  </style>
 
-  </script> -->
 </head>
 <!-- <div  style="background-color: blue;"> -->
 
 <body class="container-fluid">
-  <div class="info custom-popup">
-    <h4 class="h4 text-secondary">Chroma</h4>
+  <h4 class="h4 text-secondary">Chroma</h4>
+  <div class="info custom-popup ">
+    
     <p class="text-secondary">Chroma is a chrome extension that will help color blind people distinguish between the
       colors they cannot distinguish because of their color vision deficiency. We have worked to cater the color vision
       deficiency for
@@ -56,7 +52,7 @@
       <div class="login my-2 ">
         <p class="text-secondary"> If you want to access the Chroma - Exetension for Color Deficiency Aid, Login In to
           your existing account.</p>
-        <a target="_blank" href="/login.html" class="btn btn-primary d-block mx-auto w-25">Login</a>
+        <a target="_blank" href="login.html" class="btn btn-primary d-block mx-auto w-25">Login</a>
       </div>
 
       <div class="sign-up ">
@@ -66,8 +62,8 @@
         <a href="signup.html" target="_blank" class="btn btn-primary d-block mx-auto w-25">Sign Up</a>
       </div>
     </div>
-
-    <div class="protonopia d-none">
+  </div>
+    <div class="protonopia custom-popup">
       <p class="text-secondary">
         You have Protonopia, which is color deficiency to differentiate red shades, then you are not able to see the red
         shades properly. So, we have applied filters on all the elements of red color or their combinations with green
@@ -126,9 +122,19 @@
           <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
         </li>
       </ul>
+      <div class="slider">
+        <div class="d-flex justify-content-between">
+      <label for="customRange1" class="form-label">Intensity:</label>
+      <input type="range" class="form-range" min="0" max="100" id="customRange1">
+    </div>
+      <button  class="btn btn-primary mybtn">click me</button>
     </div>
 
-    <div class="duetronopia d-none">
+    <button class="log-out1 btn btn-primary d-block my-2 mx-auto w-50 text-center">Log Out</button>
+
+    </div>
+
+    <div class="duetronopia custom-popup">
       <p class="text-secondary">
         You have Deutronopia, which is color deficiency to differentiate green shades, then you are not able to see the
         green shades properly. So, we have applied filters on all the elements of green color or their combinations with
@@ -187,9 +193,19 @@
           <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
         </li>
       </ul>
+
+      <div class="slider">
+        <div class="d-flex justify-content-between">
+      <label for="customRange1" class="form-label">Intensity:</label>
+      <input type="range" class="form-range" min="0" max="100" id="customRange1">
+    </div>
+      <button  class="btn btn-primary mybtn">click me</button>
+    </div>
+    <button class="log-out2 btn btn-primary d-block my-2 mx-auto w-50 text-center">Log Out</button>
+
     </div>
 
-    <div class="tritanopia d-none">
+    <div class="tritanopia custom-popup">
       <p class="text-secondary">
         You have Tritanopia, which is color deficiency to differentiate blue shades, then you are not able to see the
         Blue shades properly. So, we have applied filters on all the elements of Blue color or their combinations with
@@ -248,9 +264,18 @@
           <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
         </li>
       </ul>
+      <div class="slider">
+        <div class="d-flex justify-content-between">
+      <label for="customRange1" class="form-label">Intensity:</label>
+      <input type="range" class="form-range" min="0" max="100" id="customRange1">
     </div>
+      <button  class="btn btn-primary mybtn">click me</button>
+    </div>
+    <button class="log-out3 btn btn-primary d-block my-2 mx-auto w-50 text-center">Log Out</button>
+    </div>
+<sript src="redirect.js"></sript>
+<script src="popup.js"></script>
 
-  </div>
 </body>
 
 </html>
