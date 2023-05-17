@@ -48,8 +48,8 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
   let falg = true;                             //FLAG TO CHECK IF THE BACKGROUND IMAGE HAS BEEN CHANGED
 
   for (let i = 0; i < arr.length; i++) {      //LOOP THROUGH THE ARRAY OF STYLES
-    if (i == 0) {
-      let test = element.textContent;
+    if (i == 0) {                           //CHECK IF THE ELEMENT IS A TEXT ELEMENT is empty AND SKIP IT
+      let test = element.textContent;           
       test = test.split("\n");
       if (test[0] == "") {
         i++;
@@ -202,13 +202,25 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
           for (let i = 0; i < mutations.length; i++) {     //LOOP THROUGH THE MUTATIONS
             if (!checkedelements.includes(mutations[i].target)) {      //CHECK IF THE ELEMENT HAS BEEN CHECKED BEFORE
               checkcolor(mutations[i].target, diseasecheck1, diseasecheck2, diseasecheck3);   //CHECK THE COLOR OF THE ELEMENT
-              let elements = mutations[i].target.querySelectorAll("*");    //GET ALL THE ELEMENTS IN THE MUTATION
-              for (let j = 0; j < elements.length; j++) {      //LOOP THROUGH THE ELEMENTS TO GET THE BODY ELEMENT
+              try {
+                let elements = mutations[i].target.querySelectorAll("*");    //GET ALL THE ELEMENTS IN THE MUTATION
+                for (let j = 0; j < elements.length; j++) {      //LOOP THROUGH THE ELEMENTS TO GET THE BODY ELEMENT
 
-                checkcolor(elements[j], diseasecheck1, diseasecheck2, diseasecheck3);
+                  checkcolor(elements[j], diseasecheck1, diseasecheck2, diseasecheck3);
 
+                }
+                checkedelements.push(mutations[i].target);
               }
-              checkedelements.push(mutations[i].target);
+              catch (error) {
+                console.log(error);
+              }
+              // let elements = mutations[i].target.querySelectorAll("*");    //GET ALL THE ELEMENTS IN THE MUTATION
+              // for (let j = 0; j < elements.length; j++) {      //LOOP THROUGH THE ELEMENTS TO GET THE BODY ELEMENT
+
+              //   checkcolor(elements[j], diseasecheck1, diseasecheck2, diseasecheck3);
+
+              // }
+              // checkedelements.push(mutations[i].target);
             }
           }
         }
