@@ -1,12 +1,10 @@
 let data = "";
 chrome.storage.sync.get(["myData"], function (result) {   //GET THE DATA FROM CHROME STORAGE STORED BY BACKGROUND.JS
-  // console.log("Data retrieved: ", result.myData);
   data = result.myData;
 });
 
 chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //LISTENER FOR CHANGES IN CHROME STORAGE (WHEN USER LOGS OUT)
   chrome.storage.sync.get(["myData"], function (result) {
-    // console.log("Data retrieved: ", result.myData);
     data = result.myData;
     if (data === "logout") {
       clear();
@@ -28,6 +26,7 @@ const edited = new Set();
 
 function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK THE COLOR OF THE ELEMENT
   //FIRST, SECOND AND THIRD ARE THE INDEXES OF THE RGB VALUES 
+  try {
   if (data === "logout" || data === "") {
     clear();
     data = "";
@@ -138,6 +137,7 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
       } else {
       }
     }
+    
   }
 
   if (element.style.backgroundImage && falg === true) {   //IF NONE OF THE PROPERTIES SASTISFY THE CONDITIONS THEN REMOVE THE BACKGROUND IMAGE IF IT HAS BEEN CHANGED BEFORE
@@ -149,6 +149,9 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
       element.style.backgroundImage = match;
     }
   }
+} catch (error) {
+  console.log(error);
+}
 }
 
 (() => {
@@ -158,8 +161,8 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
 
       sendResponse({ message: "hi" });
     }
+    try{
     if (data) {                 //CHECK IF THE DATA HAS BEEN RECEIVED FROM THE BACKGROUND.JS
-      // console.log("data: ", data);
       let diseasecheck1 = 0;
       let diseasecheck2 = 1;
       let diseasecheck3 = 2;
@@ -185,7 +188,6 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
         }
       }
 
-      // console.log(document.getElementsByTagName("html"));
 
       for (let i = count; i < elements.length; i++) {                           //LOOP THROUGH THE ELEMENTS CHECK COLORS
         checkcolor(elements[i], diseasecheck1, diseasecheck2, diseasecheck3);
@@ -193,15 +195,18 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
       let isCheckingColor = true;
 
       const observer = new MutationObserver((mutations) => {          //OBSERVER TO OBSERVE THE CHANGES IN THE DOM
-        console.log(mutations);
+        
         observer.disconnect();    //DISCONNECT THE OBSERVER TO AVOID ELEMENTS BEING CHANGE BY EXTENSION
         let checkedelements = Array();          //ARRAY TO STORE THE ELEMENTS THAT HAVE BEEN CHECKED
         if (isCheckingColor) {
           for (let i = 0; i < mutations.length; i++) {     //LOOP THROUGH THE MUTATIONS
             if (!checkedelements.includes(mutations[i].target)) {      //CHECK IF THE ELEMENT HAS BEEN CHECKED BEFORE
+              checkcolor(mutations[i].target, diseasecheck1, diseasecheck2, diseasecheck3);   //CHECK THE COLOR OF THE ELEMENT
               let elements = mutations[i].target.querySelectorAll("*");    //GET ALL THE ELEMENTS IN THE MUTATION
               for (let j = 0; j < elements.length; j++) {      //LOOP THROUGH THE ELEMENTS TO GET THE BODY ELEMENT
+
                 checkcolor(elements[j], diseasecheck1, diseasecheck2, diseasecheck3);
+
               }
               checkedelements.push(mutations[i].target);
             }
@@ -237,6 +242,9 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
 
       return true;
     }
+  } catch (error) {
+    console.log(error);
+  }
   });
 })();
 console.log("hello from content.js");
