@@ -10,7 +10,10 @@
   <!-- addbootsrtap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 
-  <title>Document</title>
+  <title>Sign Up</title>
+  
+  <!-- CSS FOR SIGN UP PAGE -->
+  
   <style>
     * {
       font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', "sans-serif";
@@ -26,6 +29,8 @@
       height: 2rem;
     }
 
+    /* POPUP DIVS ARE DISPLAYED NONE. WHEN THE USER WILL LOGIN AND WE CAN GET THE DISEASE OF THE USER ONLY THEN ONE OF EACH DISEASE IS BLOCKED AND THE DEFAULT BLOCK WILL BE DISPLAYED NONE */
+
     .protonopia, .duetronopia, .tritanopia {
       display: none;
     }
@@ -36,8 +41,10 @@
 
 <body class="container-fluid">
   <h4 class="h4 text-secondary">Chroma</h4>
+
+  <!-- THE DEFAULT BLOCK POPUP THAT THE USER WILL SEE IF HE's NOT LOGGED IN OR JUST LOGGED OUT OF THE EXTENSION -->
+
   <div class="info custom-popup ">
-    
     <p class="text-secondary">Chroma is a chrome extension that will help color blind people distinguish between the
       colors they cannot distinguish because of their color vision deficiency. We have worked to cater the color vision
       deficiency for
@@ -47,12 +54,17 @@
       <li>Tritanopia</li>
     </ul>
     </p>
+
+    <!-- LOGIN METHADOLOGY -->
+
     <div class="info p-1">
       <div class="login my-2 ">
         <p class="text-secondary"> If you want to access the Chroma - Exetension for Color Deficiency Aid, Login In to
           your existing account.</p>
         <a target="_blank" href="login.html" class="btn btn-primary d-block mx-auto w-25">Login</a>
       </div>
+
+      <!-- SIGN UP METHADOLOGY -->
 
       <div class="sign-up ">
         <p class="text-secondary">
@@ -62,7 +74,12 @@
       </div>
     </div>
   </div>
+
+  <!-- THE POPUP DIVS FOR EACH DISEASE -->
+  <!-- THIS POPUP WILL APPEAR IF THE DISEASE OF THE PATIENT WILL BE PROPTONOPIA -->
     <div class="protonopia custom-popup">
+
+      <!-- THE HEADING OF THE PROPTONOPIA AND INFO ABOUT THE DISEASE -->
       <p class="text-secondary">
         You have Protonopia, which is color deficiency to differentiate red shades, then you are not able to see the red
         shades properly. So, we have applied filters on all the elements of red color or their combinations with green
@@ -71,6 +88,9 @@
       </p>
       <ul>
         <li class="d-flex justify-content-between p-2">
+
+          <!-- THE INSTRUCTIONS ABOUT THE PATTERNS AND The angles in which they are drawn -->
+
           <div class="m-0 p-0">
             <span class=" font-weight-bold text-secondary">Red:</span>
             <span>
@@ -121,17 +141,13 @@
           <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
         </li>
       </ul>
-      <div class="slider">
-        <div class="d-flex justify-content-between">
-      <label for="customRange1" class="form-label">Intensity:</label>
-      <input type="range" class="form-range" min="0" max="100" id="customRange1">
-    </div>
-      <button  class="btn btn-primary mybtn">click me</button>
-    </div>
 
+      <!-- THE BUTTON TO LOG OUT FROM THE EXTENSION -->
     <button class="log-out1 btn btn-primary d-block my-2 mx-auto w-50 text-center">Log Out</button>
 
     </div>
+
+    <!-- THIS DIV WILL BE BLOCK IF THE DISEASE OF THE USER WILL BE DEUTRONOPIA -->
 
     <div class="duetronopia custom-popup">
       <p class="text-secondary">
@@ -142,11 +158,12 @@
       </p>
       <ul>
         <li class="d-flex justify-content-between p-2">
+          <!-- INFORMATION ABOUT DEUTRONOPIA DISEASE -->
           <div class="m-0 p-0">
             <span class=" font-weight-bold text-secondary">Green:</span>
             <span>
               Green Only
-              <!-- The protonopia color deficient can never be able to distinguish red. They always mixes the shades between red and green. SO the shades that include only red which is  -->
+              <!-- The deutronopia color deficient can never be able to distinguish green. They always mixes the shades between red and green. SO the shades that include only green which is  -->
               <span class="font-weight-bold ">RGB(0,G,0)</span></span>
           </div>
           <div class="mx-2 position-relative end-0"><img src="./img/bg.jpeg" class="img" alt=""></div>
@@ -193,18 +210,13 @@
         </li>
       </ul>
 
-      <div class="slider">
-        <div class="d-flex justify-content-between">
-      <label for="customRange1" class="form-label">Intensity:</label>
-      <input type="range" class="form-range" min="0" max="100" id="customRange1">
-    </div>
-      <button  class="btn btn-primary mybtn">click me</button>
-    </div>
+      <!-- THE BUTTON TO LOG OUT FROM THE EXTENSION -->
     <button class="log-out2 btn btn-primary d-block my-2 mx-auto w-50 text-center">Log Out</button>
 
     </div>
 
     <div class="tritanopia custom-popup">
+      <!-- Details about TRITONOPIA -->
       <p class="text-secondary">
         You have Tritanopia, which is color deficiency to differentiate blue shades, then you are not able to see the
         Blue shades properly. So, we have applied filters on all the elements of Blue color or their combinations with
@@ -217,7 +229,7 @@
             <span class=" font-weight-bold text-secondary">Green:</span>
             <span>
               Green Only
-              <!-- The protonopia color deficient can never be able to distinguish red. They always mixes the shades between red and green. SO the shades that include only red which is  -->
+              <!-- The tritonopia color deficient can never be able to distinguish blue. They always mixes the shades between blue and green. SO the shades that include only blue which is  -->
               <span class="font-weight-bold ">RGB(0,G,0)</span></span>
           </div>
           <div class="mx-2 position-relative end-0"><img src="./img/bg.jpeg" class="img" alt=""></div>
@@ -263,20 +275,14 @@
           <div class="mx-2 position-relative "><img src="./img/bg.jpeg" class="img" alt=""></div>
         </li>
       </ul>
-      <div class="slider">
-        <div class="d-flex justify-content-between">
-      <label for="customRange1" class="form-label">Intensity:</label>
-      <input type="range" class="form-range" min="0" max="100" id="customRange1">
-    </div>
-      <button  class="btn btn-primary mybtn">click me</button>
-    </div>
+
+      <!-- THE BUTTON TO LOG OUT FROM THE EXTENSION -->
     <button class="log-out3 btn btn-primary d-block my-2 mx-auto w-50 text-center">Log Out</button>
     </div>
+
+    <!-- Script files to execute data. Redirect for checking the disease so popups can be displayed blocked or none and popup.js for eventListeners -->
+
 <sript src="redirect.js"></sript>
-<script src="popup.js"></script>
-<!-- <script src="test.js"></script> -->
-
-
+<script src="popup.js"></script>S
 </body>
-
 </html>
