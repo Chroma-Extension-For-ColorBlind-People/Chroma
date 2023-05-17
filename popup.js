@@ -11,13 +11,12 @@ const tritanopia = document.querySelector(".tritanopia");
 const logout = document.querySelector(".log-out");
 
 // THE DATA OF THE USER HAS BEEN TAKED FROM THE REDIRECT.JS BY USING THE STORAGE API OF CHROME AND SAVED IN THE LOCAL STORAGE THEN WE ARE GETTING THE DATA FROM THE LOCAL STORAGE AND USING IT TO DISPLAY THE DATA OF THE USER
-let dataaaaa = JSON.parse(localStorage.getItem("mydata"));
-console.log("data:", dataaaaa);
-if (dataaaaa) {
+let dataLogin = JSON.parse(localStorage.getItem("mydata"));
+console.log("data:", dataLogin);
+// IF THE USER IS LOGGED IN THEN THE DATA OF THE USER WILL BE IN THE LOCAL STORAGE AND THE DATA WILL BE USED TO MAKE DIVS BLOCK AND NONE
+if (dataLogin) {
   // THE DATA OF THE USER NOW CAN BE USED TO MAKE DIVS BLOCK AND NONE
-  let disease = dataaaaa.disease;
-  let name = dataaaaa.name;
-  let email = dataaaaa.email;
+  let disease = dataLogin.disease;
   if (disease === "Protonopia") {
     console.log("Protonopia");
     info.style.display = "none";
