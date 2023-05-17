@@ -21,10 +21,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         sendResponse({message: "Data received"});
     }
     if (request.message === "Logout") {
-      chrome.storage.sync.remove('myData', function() {
+      chrome.storage.sync.set({'myData':"logout"}, function() {
         console.log('Data removed');
+       
       });
       sendResponse({message: "Data removed"});
+
     }
 });
 
