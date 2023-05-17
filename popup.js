@@ -15,22 +15,10 @@ function changepopup(data) {
   console.log(data);
   if (data.disease === "Protonopia") {
     console.log("Protonopia");
-    // var popup = document.querySelector(".protonopia");
-    // var info = document.querySelector(".info");
     info.style.display = "none";
     protonopia.style.display = "block";
   }
 }
-// document.querySelector(".mybtn").addEventListener("click", giveRangeValue);
-// Listen for messages from content.js
-
-// let disease = localStorage.getItem("disease");
-// let name = localStorage.getItem("name");
-// let email = localStorage.getItem("email");
-// console.log("data:");
-// console.log(disease);
-// console.log(name);
-// console.log(email);
 let dataaaaa = JSON.parse(localStorage.getItem("mydata"));
 console.log("data:", dataaaaa);
 if (dataaaaa) {
@@ -41,11 +29,8 @@ if (dataaaaa) {
   let email = dataaaaa.email;
   if (disease === "Protonopia") {
     console.log("Protonopia");
-    // var popup = document.querySelector(".protonopia");
-    // var info = document.querySelector(".info");
     info.style.display = "none";
     protonopia.style.display = "block";
-    // localStorage.setItem("disease", "");
   }
   if (disease === "Deuternopia") {
     console.log("Deuteranopia");

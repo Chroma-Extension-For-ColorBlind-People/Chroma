@@ -252,6 +252,3 @@ function checkcolor(element, first, second, third) {
   });
 })();
 console.log("hello from content.js");
-
-body = document.querySelector("body");
-body.style.border = "5px solid blue";

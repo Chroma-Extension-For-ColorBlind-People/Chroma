@@ -1,7 +1,5 @@
 document.querySelector(".myform").addEventListener("change", function (event) {
-  // console.log("hello gajghf");
 
-  // function checkSelectedOption() {
   var options = document.getElementById("disease").value;
   var protonopia = document.getElementById("Protonopia");
   var deutronopia = document.getElementById("Deuternopia");
