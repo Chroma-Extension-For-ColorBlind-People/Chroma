@@ -44,17 +44,6 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
     "background",
     "background-image",
   ];
-  // let arr1 = [
-  //   "color",
-  //   "backgroundColor",
-  //   "fill",
-  //   "stroke",
-  //   "stopColor",
-  //   "floodColor",
-  //   "lightingColor",
-  //   "background",
-  //   "backgroundImage",
-  // ];
 
   let style = getComputedStyle(element);      //GET THE COMPUTED STYLE OF THE ELEMENT
   let falg = true;                             //FLAG TO CHECK IF THE BACKGROUND IMAGE HAS BEEN CHANGED
