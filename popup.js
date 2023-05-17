@@ -69,9 +69,13 @@ if (dataaaaa) {
     if (disease === "Tritanopia") {
       tritanopia.style.display = "none";
     }
-    // localStorage.setItem("disease", "");
-    // localStorage.setItem("name", "");
-    // localStorage.setItem("email", "");
+    chrome.runtime.sendMessage(
+      { message: "Logout" },
+      function (response) {
+        console.log("Response from background script:", response);
+      }
+    );
+    
     localStorage.removeItem("mydata");
     info.style.display = "block";
   });
@@ -87,9 +91,13 @@ if (dataaaaa) {
     if (disease === "Tritanopia") {
       tritanopia.style.display = "none";
     }
-    // localStorage.setItem("disease", "");
-    // localStorage.setItem("name", "");
-    // localStorage.setItem("email", "");
+    chrome.runtime.sendMessage(
+      { message: "Logout" },
+      function (response) {
+        console.log("Response from background script:", response);
+      }
+    );
+   
     localStorage.removeItem("mydata");
     info.style.display = "block";
   });
@@ -105,10 +113,26 @@ if (dataaaaa) {
     if (disease === "Tritanopia") {
       tritanopia.style.display = "none";
     }
-    // localStorage.setItem("disease", "");
-    // localStorage.setItem("name", "");
-    // localStorage.setItem("email", "");
+    chrome.runtime.sendMessage(
+      { message: "Logout" },
+      function (response) {
+        console.log("Response from background script:", response);
+      }
+    );
+   
     localStorage.removeItem("mydata");
     info.style.display = "block";
   });
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+// Recieves message from content.js
+
+// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+//   if (request.message === "sendData") {
+//     console.log("Received data from redirect:", request.data);
+//   }
+// });
+
+//////////////////////////////////////////////////////////////////////////////////////////////

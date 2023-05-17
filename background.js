@@ -14,21 +14,17 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.message === "sendData") {
         console.log("Received data from redirect:", request.data);
-        // chrome.runtime.sendMessage(
-        //   { message: "givedata", data: request.data },
-        //   function (response) {
-        //     console.log("Response from background script:", response);
-        //   }
-        // );
-
         chrome.storage.sync.set({'myData': request.data}, function() {
           console.log('Data stored: ', request.data);
       });
-        
-        // Do something with the data
-        
-        // Send a response back to the popup
+  
         sendResponse({message: "Data received"});
+    }
+    if (request.message === "Logout") {
+      chrome.storage.sync.remove('myData', function() {
+        console.log('Data removed');
+      });
+      sendResponse({message: "Data removed"});
     }
 });
 
