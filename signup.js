@@ -12,7 +12,7 @@ document.querySelector(".myform").addEventListener("change", function (event) {
     protonopia.style.display = "block";
   } else {
     let detect1 = document.getElementById("detect-red");
-    let detect2= document.getElementById("detect-green");
+    let detect2 = document.getElementById("detect-green");
     let detect3 = document.getElementById("detect-blue");
 
     detect1.innerHTML = "";
