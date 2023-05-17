@@ -119,14 +119,7 @@ document
     let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
-    if (
-      !(
-        disease === "NotConfirmed" &&
-        name === "" &&
-        email === "" &&
-        password === ""
-      )
-    ) {
+    if (!(disease === "NotConfirmed" || name === "" || email === "" || password === "")) {
       let btn = document.getElementById("loginButton");
       btn.disabled = false;
     }
