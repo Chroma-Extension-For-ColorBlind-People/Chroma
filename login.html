@@ -1,95 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Login Page</title>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
     <!-- CSS -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            background-color: #a6bace;
-        }
+      body {
+        background-color: #a6bace;
+      }
 
-        .row {
-            background-color: white;
-            border-radius: 30px;
-            box-shadow: 15px 15px 20px grey;
-        }
+      .row {
+        background-color: white;
+        border-radius: 30px;
+        box-shadow: 15px 15px 20px grey;
+      }
 
-        .loginImg {
-            border-top-left-radius: 30px;
-            border-bottom-left-radius: 30px;
-        }
+      .loginImg {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+      }
 
-        .btn1 {
-            border: none;
-            outline: none;
-            height: 50px;
-            width: 100%;
-            color: white;
-            border-radius: 5px;
-            font-weight: bold;
-            background-color: black;
-        }
+      .btn1 {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+        background-color: black;
+      }
 
-        .btn1:hover {
-            color: black;
-            border: 2px solid black;
-            background-color: white;
-        }
+      .btn1:hover {
+        color: black;
+        border: 2px solid black;
+        background-color: white;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <section class="Form mt-5 mx-4">
-        <div class="container">
-            <div class="row no-gutters">
-                <div class="col-lg-5">
-                    <img src="cwh.jfif" class="img-fluid loginImg" alt="loginImg">
+      <div class="container">
+        <div class="row no-gutters">
+          <!-- Side Image -->
+          <div class="col-lg-5">
+            <img src="cwh.jfif" class="img-fluid loginImg" alt="loginImg" />
+          </div>
+          <!-- Login page started -->
+          <div class="col-lg-7 py-5 px-5">
+            <h1 class="font-weight-bold py-3">Login</h1>
+            <h4>Sign in to your account</h4>
+            <form
+              action="http://chroma.ap-1.evennode.com"
+              id="loginPage"
+              method="POST"
+            >
+              <div class="form-row">
+                <div class="col-lg-7 py-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter email"
+                    name="email"
+                    id="email"
+                  />
+                  <input type="hidden" name="url" id="urlField" />
                 </div>
-                <div class="col-lg-7 py-5 px-5">
-                    <h1 class="font-weight-bold py-3">Login</h1>
-                    <h4>Sign in to your account</h4>
-                    <form action="http://chroma.ap-1.evennode.com" id="loginPage" method="POST">
-                        <div class="form-row">
-                            <div class="col-lg-7 py-3">
-                                <input type="email" class="form-control" placeholder="Enter email" name="email"
-                                    id="email">
-                                <input type="hidden" name="url" id="urlField">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-lg-7 py-3">
-                                <input type="password" class="form-control" placeholder="password" name="password"
-                                    id="password">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-lg-7 py-3">
-                                <button type="submit" class="btn1" id="loginButton">Login</button>
-                            </div>
-                        </div>
-                        <p class="py-3">Don't have an account? <a href="#">Resgister Here</a></p>
-                    </form>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-7 py-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="password"
+                    name="password"
+                    id="password"
+                  />
                 </div>
-            </div>
+              </div>
+              <!-- Submit Button -->
+              <div class="form-row">
+                <div class="col-lg-7 py-3">
+                  <button type="submit" class="btn1" id="loginButton">
+                    Login
+                  </button>
+                </div>
+              </div>
+              <!-- REDIRECTION TO SIGN UP PAGE -->
+              <p class="py-3">
+                Don't have an account? <a href="#">Resgister Here</a>
+              </p>
+            </form>
+          </div>
         </div>
+      </div>
+      <!-- INCLUDIING REDIRECT.JS TO REDIRECT THE LOGIN REQUEST TO OUR NODE SCRIPT  -->
     </section>
     <script src="redirect.js"></script>
-</body>
-
+  </body>
 </html>
