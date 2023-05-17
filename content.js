@@ -8,14 +8,13 @@ chrome.storage.sync.onChanged.addListener(function (changes, namespace) {
   chrome.storage.sync.get(["myData"], function (result) {
     console.log("Data retrieved: ", result.myData);
     data = result.myData;
-    if(data==="logout"){
+    if (data === "logout") {
       clear();
-      data="";
+      data = "";
       return;
     }
   });
 });
-
 
 function clear() {
   for (const element of edited) {
@@ -28,10 +27,10 @@ function clear() {
 const edited = new Set();
 var condition = Array();
 
-function checkcolor(element, checkstr) {
-  if(data==="logout" || data===""){
+function checkcolor(element, first, second, third) {
+  if (data === "logout" || data === "") {
     clear();
-    data="";
+    data = "";
     return;
   }
   let arr = [
@@ -83,9 +82,9 @@ function checkcolor(element, checkstr) {
 
     for (let j = 0; j < matches.length; j++) {
       color = matches[j].match(/\d+/g);
-      red = parseInt(color[0]);
-      green = parseInt(color[1]);
-      blue = parseInt(color[2]);
+      red = parseInt(color[first]);
+      green = parseInt(color[second]);
+      blue = parseInt(color[third]);
       // console.log(red, green, blue);
       if (red != 0 && green == 0 && blue == 0) {
         const regex =
@@ -190,6 +189,24 @@ function checkcolor(element, checkstr) {
     sendResponse
   ) {
     if (data) {
+      console.log("data: ", data);
+
+      let diseasecheck1 = 0;
+      let diseasecheck2 = 1;
+      let diseasecheck3 = 2;
+      if (data.disease === "Protonopia") {
+        diseasecheck1 = 0;
+        diseasecheck2 = 1;
+        diseasecheck3 = 2;
+      } else if (data.disease === "Deuternopia") {
+        diseasecheck1 = 1;
+        diseasecheck2 = 0;
+        diseasecheck3 = 2;
+      } else if (data.disease === "Tritanopia") {
+        diseasecheck1 = 2;
+        diseasecheck2 = 1;
+        diseasecheck3 = 0;
+      }
       Arr = document.querySelectorAll("*");
       var elements = Array.from(Arr);
       for (let j = 0; j < elements.length; j++) {
@@ -202,7 +219,7 @@ function checkcolor(element, checkstr) {
       console.log(document.getElementsByTagName("html"));
 
       for (let i = count; i < elements.length; i++) {
-        checkcolor(elements[i], "first");
+        checkcolor(elements[i], diseasecheck1, diseasecheck2, diseasecheck3);
       }
       let isCheckingColor = true;
       let counter = 0;
@@ -224,7 +241,12 @@ function checkcolor(element, checkstr) {
               let elements = mutations[i].target.querySelectorAll("*");
               for (let j = 0; j < elements.length; j++) {
                 console.log(3);
-                checkcolor(elements[j], "mutation");
+                checkcolor(
+                  elements[j],
+                  diseasecheck1,
+                  diseasecheck2,
+                  diseasecheck3
+                );
               }
               checkedelements.push(mutations[i].target);
             }
@@ -237,12 +259,12 @@ function checkcolor(element, checkstr) {
         isCheckingColor = true;
 
         console.log("bahir");
-        if(data==="logout"){
+        if (data === "logout") {
           clear();
-          data="";
+          data = "";
           return;
         }
-          
+
         observer.observe(document.body, {
           subtree: true,
           childList: true,
