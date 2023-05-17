@@ -7,13 +7,6 @@ document.getElementById("urlField").value = currentUrl;
 function showAlert(message) {
   alert(message);
 }
-// FORMDATA (TO GET THE DATA FROM THE FORM) (EVENT.TARGET -> FORM)
-var formData = new FormData(event.target);
-const data = {};
-for (let pair of formData.entries()) {
-  data[pair[0]] = pair[1]; // CREATING KEY-VALUE PAIR OF ALL FIELDS OF DATA
-}
-xhr.send(JSON.stringify(data)); // SENDING THE DATA TO THE SERVER
 // GETTING THE DATA FROM THE FORM AND SENDING IT TO THE SERVER AND THEN RECEIVING THE RESPONSE
 document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -41,4 +34,11 @@ document.querySelector("form").addEventListener("submit", function (event) {
       showAlert(data.msg);
     }
   };
+  // FORMDATA (TO GET THE DATA FROM THE FORM) (EVENT.TARGET -> FORM)
+  var formData = new FormData(event.target);
+  const data = {};
+  for (let pair of formData.entries()) {
+    data[pair[0]] = pair[1]; // CREATING KEY-VALUE PAIR OF ALL FIELDS OF DATA
+  }
+  xhr.send(JSON.stringify(data)); // SENDING THE DATA TO THE SERVER
 }); 
