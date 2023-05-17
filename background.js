@@ -1,5 +1,5 @@
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-  if (changeInfo.status === 'complete') {
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {    // CHROME API - onUpdated ... EVENT LISTENER FOR TABS TO CHECK IF THE TAB IS UPDATED
+  if (changeInfo.status === 'complete') {                                // IF TAB IS UPDATED THEN SEND MESSAGE TO CONTENT.JS
     chrome.tabs.sendMessage(tabId, { message: "hello" }, function (response) {
       if (chrome.runtime.lastError) {
         console.log("Error handling response: " + chrome.runtime.lastError.message);
@@ -11,16 +11,15 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
   
 });
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.message === "sendData") {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {    // CHROME API - onMessage ... EVENT LISTENER FOR MESSAGES 
+    if (request.message === "sendData") {                                     // IF MESSAGE IS "sendData" (FROM redierct.js) THEN STORE THE DATA IN CHROME STORAGE
         console.log("Received data from redirect:", request.data);
         chrome.storage.sync.set({'myData': request.data}, function() {
           console.log('Data stored: ', request.data);
       });
-  
         sendResponse({message: "Data received"});
     }
-    if (request.message === "Logout") {
+    if (request.message === "Logout") {                                   // IF MESSAGE IS "Logout" (FROM popup.js) THEN REMOVE THE DATA FROM CHROME STORAGE
       chrome.storage.sync.set({'myData':"logout"}, function() {
         console.log('Data removed');
        

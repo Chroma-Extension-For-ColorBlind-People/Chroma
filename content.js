@@ -1,12 +1,12 @@
 let data = "";
-chrome.storage.sync.get(["myData"], function (result) {   //get login data from storage
-  console.log("Data retrieved: ", result.myData);
+chrome.storage.sync.get(["myData"], function (result) {   //GET THE DATA FROM CHROME STORAGE STORED BY BACKGROUND.JS
+  // console.log("Data retrieved: ", result.myData);
   data = result.myData;
 });
 
-chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //listen for changes in storage mostly logout
+chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //LISTENER FOR CHANGES IN CHROME STORAGE (WHEN USER LOGS OUT)
   chrome.storage.sync.get(["myData"], function (result) {
-    console.log("Data retrieved: ", result.myData);
+    // console.log("Data retrieved: ", result.myData);
     data = result.myData;
     if (data === "logout") {
       clear();
@@ -19,8 +19,8 @@ chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //list
 function clear() {
   for (const element of edited) {
     const regex =
-      /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g; //regex to remove the background image
-    const match = element.style.backgroundImage.replace(regex, "");    //replace the background image with empty string
+      /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g; //REGEX TO MATCH THE BACKGROUND IMAGE
+    const match = element.style.backgroundImage.replace(regex, "");    //REPLACE THE BACKGROUND IMAGE WITH EMPTY STRING
     element.style.backgroundImage = match;
   }
 }
@@ -166,12 +166,12 @@ function checkcolor(element, first, second, third) {
 (() => {
   chrome.runtime.onMessage.addListener(function (request,sender,sendResponse) {
     if (request.message != "hello") {
-      console.log("url: ", request.message);
+      console.log("url: ", request.message);   
 
       sendResponse({ message: "hi" });
     }
     if (data) {
-      console.log("data: ", data);
+      // console.log("data: ", data);
       let diseasecheck1 = 0;
       let diseasecheck2 = 1;
       let diseasecheck3 = 2;
@@ -197,7 +197,7 @@ function checkcolor(element, first, second, third) {
         }
       }
 
-      console.log(document.getElementsByTagName("html"));
+      // console.log(document.getElementsByTagName("html"));
 
       for (let i = count; i < elements.length; i++) {
         checkcolor(elements[i], diseasecheck1, diseasecheck2, diseasecheck3);
