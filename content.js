@@ -1,10 +1,10 @@
 let data = "";
-chrome.storage.sync.get(["myData"], function (result) {
+chrome.storage.sync.get(["myData"], function (result) {   //get login data from storage
   console.log("Data retrieved: ", result.myData);
   data = result.myData;
 });
 
-chrome.storage.sync.onChanged.addListener(function (changes, namespace) {
+chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //listen for changes in storage mostly logout
   chrome.storage.sync.get(["myData"], function (result) {
     console.log("Data retrieved: ", result.myData);
     data = result.myData;
@@ -19,13 +19,12 @@ chrome.storage.sync.onChanged.addListener(function (changes, namespace) {
 function clear() {
   for (const element of edited) {
     const regex =
-      /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
-    const match = element.style.backgroundImage.replace(regex, "");
+      /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g; //regex to remove the background image
+    const match = element.style.backgroundImage.replace(regex, "");    //replace the background image with empty string
     element.style.backgroundImage = match;
   }
 }
 const edited = new Set();
-var condition = Array();
 
 function checkcolor(element, first, second, third) {
   if (data === "logout" || data === "") {
@@ -64,16 +63,12 @@ function checkcolor(element, first, second, third) {
       let test = element.textContent;
       test = test.split("\n");
       if (test[0] == "") {
-        // console.log(test);
-        // console.log("empty", element);
         i++;
       }
     }
 
-    document.getElementsByClassName;
-
     let color = style.getPropertyValue(arr[i]);
-    const pattern = /rgb.?\(.*?\)/g;
+    const pattern = /rgb.?\(.*?\)/g;     //regex to match rgb values
     const matches = color.match(pattern);
 
     if (matches == null) {
@@ -85,7 +80,6 @@ function checkcolor(element, first, second, third) {
       red = parseInt(color[first]);
       green = parseInt(color[second]);
       blue = parseInt(color[third]);
-      // console.log(red, green, blue);
       if (red != 0 && green == 0 && blue == 0) {
         const regex =
           /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
@@ -93,8 +87,6 @@ function checkcolor(element, first, second, third) {
         element.style.backgroundImage =
           match +
           " repeating-linear-gradient(0deg,transparent,transparent 10px,#000 12px,#000 2px)";
-
-        // console.log("fuck");
         edited.add(element);
         falg = false;
       } else if (red > blue / 3 && green == 0 && blue != 0) {
@@ -106,7 +98,6 @@ function checkcolor(element, first, second, third) {
           " repeating-linear-gradient(45deg,transparent,transparent 10px,#000 12px,#000 2px)";
 
         edited.add(element);
-        // console.log("fuck");
 
         falg = false;
       } else if (red == 0 && green != 0 && blue == 0) {
@@ -118,7 +109,6 @@ function checkcolor(element, first, second, third) {
           " repeating-linear-gradient(90deg,transparent,transparent 10px,#000 12px,#000 2px)";
 
         edited.add(element);
-        // console.log("fuck");
 
         falg = false;
       } else if (green > blue / 3 && red == 0 && blue != 0) {
@@ -130,7 +120,6 @@ function checkcolor(element, first, second, third) {
           " repeating-linear-gradient(135deg,transparent,transparent 10px,#000 12px,#000 2px)";
 
         edited.add(element);
-        // console.log("fuck");
 
         falg = false;
       } else if (Math.abs(red - green) > 20 && blue == 0) {
@@ -142,7 +131,6 @@ function checkcolor(element, first, second, third) {
           match +
           " repeating-linear-gradient(30deg,transparent,transparent 10px,#000 12px,#000 2px)";
         edited.add(element);
-        // console.log("fuck");
 
         falg = false;
       } else if (Math.abs(red - green) > 20 && red != 0) {
@@ -154,16 +142,12 @@ function checkcolor(element, first, second, third) {
           " repeating-linear-gradient(110deg,transparent,transparent 10px,#000 12px,#000 2px)";
 
         edited.add(element);
-        // console.log("fuck");
         falg = false;
       } else {
-        // console.log('no fuck')
       }
     }
   }
-  // console.log(falg);
   if (element.style.backgroundImage && falg === true) {
-    // console.log(element.style.backgroundImage);
     let background = element.style.backgroundImage;
     if (
       background.includes("repeating-linear-gradient") &&
@@ -171,10 +155,7 @@ function checkcolor(element, first, second, third) {
         "transparent, transparent 10px, rgb(0, 0, 0) 12px, rgb(0, 0, 0) 2px"
       )
     ) {
-      const regex =
-        /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
-      // console.log("removed");
-
+      const regex = /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
       const match = background.replace(regex, "");
       edited.delete(element);
       element.style.backgroundImage = match;
@@ -183,14 +164,14 @@ function checkcolor(element, first, second, third) {
 }
 
 (() => {
-  chrome.runtime.onMessage.addListener(function (
-    request,
-    sender,
-    sendResponse
-  ) {
+  chrome.runtime.onMessage.addListener(function (request,sender,sendResponse) {
+    if (request.message != "hello") {
+      console.log("url: ", request.message);
+
+      sendResponse({ message: "hi" });
+    }
     if (data) {
       console.log("data: ", data);
-
       let diseasecheck1 = 0;
       let diseasecheck2 = 1;
       let diseasecheck3 = 2;
@@ -222,50 +203,30 @@ function checkcolor(element, first, second, third) {
         checkcolor(elements[i], diseasecheck1, diseasecheck2, diseasecheck3);
       }
       let isCheckingColor = true;
-      let counter = 0;
 
       const observer = new MutationObserver((mutations) => {
-        counter++;
-        console.log("counter: ", counter);
         console.log(mutations);
-        observer.disconnect();
-        let checkedelements = Array();
-        // Check for changes in the DOM here
+        observer.disconnect();    //disconnect the observer to avoid changes done by the extension to be observed
+        let checkedelements = Array();         //array to store the elements that have been checked to avoaid repitition
         if (isCheckingColor) {
-          console.log("andar");
-
-          for (let i = 0; i < mutations.length; i++) {
-            console.log(1);
-            if (!checkedelements.includes(mutations[i].target)) {
-              console.log(2);
-              let elements = mutations[i].target.querySelectorAll("*");
-              for (let j = 0; j < elements.length; j++) {
-                console.log(3);
-                checkcolor(
-                  elements[j],
-                  diseasecheck1,
-                  diseasecheck2,
-                  diseasecheck3
-                );
+          for (let i = 0; i < mutations.length; i++) {     //loop through the mutations
+            if (!checkedelements.includes(mutations[i].target)) {      //check if the element has been checked before
+              let elements = mutations[i].target.querySelectorAll("*");    //get all the elements inside the target
+              for (let j = 0; j < elements.length; j++) {      //loop through the elements
+                checkcolor(elements[j], diseasecheck1, diseasecheck2, diseasecheck3);
               }
               checkedelements.push(mutations[i].target);
             }
           }
-
-          console.log(
-            "------------------------------------------------------------------------"
-          );
         }
         isCheckingColor = true;
-
-        console.log("bahir");
-        if (data === "logout") {
+        if (data === "logout") {   //check if the user has logged out
           clear();
           data = "";
           return;
         }
 
-        observer.observe(document.body, {
+        observer.observe(document.body, {   //observe the body for changes
           subtree: true,
           childList: true,
           attributes: true,
@@ -275,7 +236,8 @@ function checkcolor(element, first, second, third) {
         });
       });
 
-      observer.observe(document.body, {
+        // Check for changes in the DOM here
+      observer.observe(document.body, {   //observe the body for changes (initially)
         subtree: true,
         childList: true,
         attributes: true,
@@ -284,11 +246,7 @@ function checkcolor(element, first, second, third) {
         // repeat: 3000 // Check for changes every second
       });
 
-      if (request.message != "hello") {
-        console.log("url: ", request.message);
-
-        sendResponse({ message: "hi" });
-      }
+      
       return true;
     }
   });
