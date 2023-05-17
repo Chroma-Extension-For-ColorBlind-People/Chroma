@@ -8,7 +8,23 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       }
     });
   }
-  chrome.identity.getProfileUserInfo(function (userInfo) {
-    console.log(userInfo);
-  });
+  
 });
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.message === "sendData") {
+        console.log("Received data from redirect:", request.data);
+        chrome.storage.sync.set({'myData': request.data}, function() {
+          console.log('Data stored: ', request.data);
+      });
+  
+        sendResponse({message: "Data received"});
+    }
+    if (request.message === "Logout") {
+      chrome.storage.sync.remove('myData', function() {
+        console.log('Data removed');
+      });
+      sendResponse({message: "Data removed"});
+    }
+});
+

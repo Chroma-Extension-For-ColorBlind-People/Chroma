@@ -1,0 +1,55 @@
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #a6bace;
+      }
+
+      .row {
+        background-color: white;
+        border-radius: 30px;
+        box-shadow: 15px 15px 20px grey;
+      }
+
+      .loginImg {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+      }
+
+      .btn1 {
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+        background-color: black;
+      }
+
+      .btn1:hover {
+        color: black;
+        border: 2px solid black;
+        background-color: white;
+      }
+
+      #Protonopia {
+        display: none;
+      }
+
+        #Deuternopia {
+            display: none;
+        }
+
+        #Tritonopia {
+            display: none;
+        }
+
+      .test-images {
+        width: 45%;
+        height: 90%;
+      }
+    

@@ -4,7 +4,8 @@
     "description": "help distiguish between different types of colors",
     "permissions": [
         "tabs",
-        "identity"
+        "identity",
+        "storage"
     ],
     "host_permissions": [
         "*://*/"
@@ -16,8 +17,7 @@
                 "https://*/*"
             ],
             "js": [
-                "content.js",
-                "redirect.js"
+                "content.js"
             ]
         }
     ],
@@ -32,6 +32,7 @@
             "32": "assets/ext-icon.png"
         },
         "default_title": "Chroma"
+
     },
     "manifest_version": 3
 }
