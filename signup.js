@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loginButton.style.pointerEvents = 'none'; // Disable hover effect initially
 });
 
+
 // FUNCTION TO CHECK IF ALL THE VALUES ARE FILLED
 function checkform(event) {
   // DETECTING CHANGE IN THE FORM
