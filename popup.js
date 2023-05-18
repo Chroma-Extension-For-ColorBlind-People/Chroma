@@ -76,6 +76,8 @@ if (dataLogin) {
     // REMOVING THE DATA FROM THE LOCAL STORAGE AFTER THAT HE LOGGED OUT
 
     localStorage.removeItem("mydata");
+    localStorage.removeItem("state");
+
     info.style.display = "block";
   });
 
@@ -97,11 +99,16 @@ if (dataLogin) {
 
     // REMOVING THE DATA FROM THE LOCAL STORAGE AFTER THAT HE LOGGED OUT
     localStorage.removeItem("mydata");
+    localStorage.removeItem("state");
+
     info.style.display = "block";
   });
 }
 
 var toggleButton = document.getElementById('customSwitches');
+var toggleButton1 = document.getElementById('customSwitches1');
+var toggleButton2 = document.getElementById('customSwitches2');
+
   toggleButton.addEventListener('change', function() {
     var value = this.checked ? 'ON' : 'OFF';
     localStorage.setItem("state", value);
@@ -113,11 +120,49 @@ var toggleButton = document.getElementById('customSwitches');
       
     );
   });
+  toggleButton1.addEventListener('change', function() {
+    var value = this.checked ? 'ON' : 'OFF';
+    localStorage.setItem("state", value);
+    chrome.runtime.sendMessage(
+      { message: "toggle", state: value }, // MESSAGE TO BE SENT
+      function (response) {  // CALLBACK FUNCTION
+        console.log("Response from background script:", response);
+      }
+
+    );
+  });
+  toggleButton2.addEventListener('change', function() {
+    var value = this.checked ? 'ON' : 'OFF';
+    localStorage.setItem("state", value);
+    chrome.runtime.sendMessage(
+      { message: "toggle", state: value }, // MESSAGE TO BE SENT
+      function (response) {  // CALLBACK FUNCTION
+        console.log("Response from background script:", response);
+      }
+
+    );
+  });
+
+  toggleButton2.addEventListener('change', function() {
+    var value = this.checked ? 'ON' : 'OFF';
+    localStorage.setItem("state",value);
+    chrome.runtime.sendMessage(
+      { message: "toggle", state: value }, // MESSAGE TO BE SENT
+      function (response) {  // CALLBACK FUNCTION
+        console.log("Response from background script:", response);
+      }
+    );
+  });
+
 
   var state = localStorage.getItem("state");
   if(state === "ON"){
     toggleButton.checked = true;
+    toggleButton1.checked = true;
+    toggleButton2.checked = true;
   }
   else{
     toggleButton.checked = false;
+    toggleButton1.checked = false;
+    toggleButton2.checked = false;
   }

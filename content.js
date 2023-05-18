@@ -115,8 +115,7 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
           falg = false;
 
         } else if (color1 > color3 / 3 && color2 == 0 && color3 != 0) {
-          const regex =
-            /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           // match = match.trim();
 
@@ -178,7 +177,7 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
           falg = false;
 
         } else if (Math.abs(color1 - color2) > 20 && color1 != 0) {
-          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\),/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           match = match.trim();
 
