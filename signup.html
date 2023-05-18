@@ -1,228 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Sign Up Page</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+<head>
+  <title>Sign Up Page</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <link rel="stylesheet" href="signup.css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
-    <!-- CSS -->
-  </head>
+  <link rel="stylesheet" href="signup.css" />
 
-  <body>
-    <section class="Form mt-5 mx-4">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-lg-5">
-            <img src="cwh.jfif" class="img-fluid loginImg" alt="loginImg" />
-          </div>
-          <div class="col-lg-7 py-5 px-5">
-            <h1 class="font-weight-bold py-2">Sign Up</h1>
-            <h4>Create your account</h4>
-            <form
-              action="http://chroma.ap-1.evennode.com"
-              id="loginPage"
-              method="POST"
-            >
-              <div class="form-row">
-                <div class="col-lg-7 py-2">
-                  <select
-                    class="form-control myform"
-                    name="disease"
-                    id="disease"
-                  >
-                    <option value="SelectDisease" disabled selected>
-                      Select Disease
-                    </option>
-                    <option value="NotConfirmed">Not Confirmed</option>
-                    <option value="Protonopia">Protonopia/Red-Blind</option>
-                    <option value="Deuternopia">Deuternopia/Green-Blind</option>
-                    <option value="Tritanopia">Tritanopia/Blue-Blind</option>
-                  </select>
-                </div>
+  <!-- CSS -->
+</head>
+
+<body>
+  <section class="Form mt-5 mx-4">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-5">
+          <img src="cwh.jfif" class="img-fluid loginImg" alt="loginImg" />
+        </div>
+        <div class="col-lg-7 py-5 px-5">
+          <h1 class="font-weight-bold py-2">Sign Up</h1>
+          <h4>Create your account</h4>
+          <form action="http://chroma.ap-1.evennode.com" id="loginPage" method="POST">
+            <div class="form-row">
+              <div class="col-lg-7 py-2">
+                <select class="form-control myform" name="disease" id="disease">
+                  <option value="SelectDisease" disabled selected>
+                    Select Disease
+                  </option>
+                  <option value="NotConfirmed">Not Confirmed</option>
+                  <option value="Protonopia">Protonopia/Red-Blind</option>
+                  <option value="Deuternopia">Deuternopia/Green-Blind</option>
+                  <option value="Tritanopia">Tritanopia/Blue-Blind</option>
+                </select>
               </div>
-              <div class="form-row">
-                <div class="col-lg-7 py-2">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter name"
-                    name="name"
-                    id="name"
-                  />
-                </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7 py-2">
+                <input type="text" class="form-control" placeholder="Enter name" name="name" id="name" />
               </div>
-              <div class="form-row">
-                <div class="col-lg-7 py-2">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Enter email"
-                    name="email"
-                    id="email"
-                  />
-                  <input type="hidden" name="url" id="urlField" />
-                </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7 py-2">
+                <input type="email" class="form-control" placeholder="Enter email" name="email" id="email" />
+                <input type="hidden" name="url" id="urlField" />
               </div>
-              <div class="form-row">
-                <div class="col-lg-7 py-2">
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="password"
-                    name="password"
-                    id="password"
-                  />
-                </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7 py-2">
+                <input type="password" class="form-control" placeholder="password" name="password" id="password" />
               </div>
+            </div>
 
-              <div id="Protonopia">
-                <img class="test-images" src="./img/red-blind.PNG" alt="" />
-                <div>
-                  <input
-                    type="radio"
-                    name="red-blind"
-                    id="option-1"
-                    value="26"
-                  />
-                  <label for="option-1">26</label>
+            <div id="Protonopia">
+              <img class="test-images" src="./img/red-blind.PNG" alt="" />
+              <div>
+                <input type="radio" name="red-blind" id="option-1" value="26" />
+                <label for="option-1">26</label>
 
-                  <input
-                    type="radio"
-                    name="red-blind"
-                    id="option-2"
-                    value="2"
-                  />
-                  <label for="option-2">2</label>
+                <input type="radio" name="red-blind" id="option-2" value="2" />
+                <label for="option-2">2</label>
 
-                  <input
-                    type="radio"
-                    name="red-blind"
-                    id="option-3"
-                    value="8"
-                  />
-                  <label for="option-3">8</label>
+                <input type="radio" name="red-blind" id="option-3" value="8" />
+                <label for="option-3">8</label>
 
-                  <input
-                    type="radio"
-                    name="red-blind"
-                    id="option-4"
-                    value="72"
-                  />
-                  <label for="option-4">72</label>
-                </div>
-                <button type="button" class="btn btn-primary buttonRed">
-                  Click Me
+                <input type="radio" name="red-blind" id="option-4" value="72" />
+                <label for="option-4">72</label>
+              </div>
+              <button type="button" class="btn btn-primary buttonRed">
+                Click Me
+              </button>
+            </div>
+            <div class="text-success" id="detect-red"></div>
+            <div id="Deuternopia">
+              <img class="test-images" src="./img/green-blind.PNG" alt="" />
+              <div>
+                <input type="radio" name="green-blind" id="option-g1" value="26" />
+                <label for="option-1">5</label>
+
+                <input type="radio" name="green-blind" id="option-g2" value="2" />
+                <label for="option-2">27</label>
+
+                <input type="radio" name="green-blind" id="option-g3" value="8" />
+                <label for="option-3">57</label>
+
+                <input type="radio" name="green-blind" id="option-g4" value="none" />
+                <label for="option-4">None</label>
+              </div>
+              <button type="button" class="btn btn-primary buttonGreen">
+                Click Me
+              </button>
+            </div>
+            <div class="text-success" id="detect-green"></div>
+            <div id="Tritonopia">
+              <img class="test-images" src="./img/blue-blind.PNG" alt="" />
+              <div>
+                <input type="radio" name="blue-blind" id="option-b1" value="26" />
+                <label for="option-b1">2</label>
+
+                <input type="radio" name="blue-blind" id="option-b2" value="2" />
+                <label for="option-b2">79</label>
+
+                <input type="radio" name="blue-blind" id="option-b3" value="8" />
+                <label for="option-b3">29</label>
+
+                <input type="radio" name="blue-blind" id="option-b4" value="none" />
+                <label for="option-b4">None</label>
+              </div>
+              <button type="button" class="btn btn-primary buttonBlue">
+                Click Me
+              </button>
+            </div>
+            <div class="text-success" id="detect-blue"></div>
+
+            <div class="form-row">
+              <div class="col-lg-7 py-2">
+                <button type="submit" class="btn1" id="loginButton" disabled>
+                  Create Account
                 </button>
               </div>
-              <div class="text-success" id="detect-red"></div>
-              <div id="Deuternopia">
-                <img class="test-images" src="./img/green-blind.PNG" alt="" />
-                <div>
-                  <input
-                    type="radio"
-                    name="green-blind"
-                    id="option-g1"
-                    value="26"
-                  />
-                  <label for="option-1">5</label>
-
-                  <input
-                    type="radio"
-                    name="green-blind"
-                    id="option-g2"
-                    value="2"
-                  />
-                  <label for="option-2">27</label>
-
-                  <input
-                    type="radio"
-                    name="green-blind"
-                    id="option-g3"
-                    value="8"
-                  />
-                  <label for="option-3">57</label>
-
-                  <input
-                    type="radio"
-                    name="green-blind"
-                    id="option-g4"
-                    value="none"
-                  />
-                  <label for="option-4">None</label>
-                </div>
-                <button type="button" class="btn btn-primary buttonGreen">
-                  Click Me
-                </button>
-              </div>
-              <div class="text-success" id="detect-green"></div>
-              <div id="Tritonopia">
-                <img class="test-images" src="./img/blue-blind.PNG" alt="" />
-                <div>
-                  <input
-                    type="radio"
-                    name="blue-blind"
-                    id="option-b1"
-                    value="26"
-                  />
-                  <label for="option-b1">2</label>
-
-                  <input
-                    type="radio"
-                    name="blue-blind"
-                    id="option-b2"
-                    value="2"
-                  />
-                  <label for="option-b2">79</label>
-
-                  <input
-                    type="radio"
-                    name="blue-blind"
-                    id="option-b3"
-                    value="8"
-                  />
-                  <label for="option-b3">29</label>
-
-                  <input
-                    type="radio"
-                    name="blue-blind"
-                    id="option-b4"
-                    value="none"
-                  />
-                  <label for="option-b4">None</label>
-                </div>
-                <button type="button" class="btn btn-primary buttonBlue">
-                  Click Me
-                </button>
-              </div>
-              <div class="text-success" id="detect-blue"></div>
-
-              <div class="form-row">
-                <div class="col-lg-7 py-2">
-                  <button type="submit" class="btn1" id="loginButton" disabled>
-                    Create Account
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
-    </section>
-    <script src="redirect.js"></script>
-    <script src="signup.js"></script>
-  </body>
+    </div>
+  </section>
+  <script src="redirect.js"></script>
+  <script src="signup.js"></script>
+</body>
+
 </html>

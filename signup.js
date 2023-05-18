@@ -1,3 +1,11 @@
+
+// TO DISABLE THE BUTTON HOVER WHEN THE PAGE LOADS 
+document.addEventListener('DOMContentLoaded', function () {
+  const loginButton = document.getElementById('loginButton');
+  loginButton.style.pointerEvents = 'none'; // Disable hover effect initially
+});
+
+// FUNCTION TO CHECK IF ALL THE VALUES ARE FILLED
 function checkform(event) {
   // DETECTING CHANGE IN THE FORM
   console.log("change");
@@ -27,10 +35,13 @@ function checkform(event) {
     // CHECKING IF ALL THE VALUES ARE FILLED
     let btn = document.getElementById("loginButton");
     btn.disabled = false;
+    btn.style.pointerEvents = "auto";
   } else {
     // IF NOT FILLED THEN DISABLE THE BUTTON
     let btn = document.getElementById("loginButton");
     btn.disabled = true;
+    btn.style.pointerEvents = "none";
+
   }
 }
 

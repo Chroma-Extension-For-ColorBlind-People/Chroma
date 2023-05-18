@@ -1,6 +1,5 @@
 // GET THE URL OF THE CURRENT PAGE
 var currentUrl = window.location.href;
-
 // SET THE VALUE OF THE HIDDEN INPUT FIELD TO THE CURRENT URL
 document.getElementById("urlField").value = currentUrl;
 // FUNCTION TO SHOW ALERT
