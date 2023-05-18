@@ -1,3 +1,21 @@
+function checkform(event) {       // DETECTING CHANGE IN THE FORM
+  console.log("change");
+    let disease = document.getElementById("disease").value;                               // GETTING THE VALUES OF THE FORM
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    console.log('diease',disease,'name',name,'email',email,'password',password);
+    if (!(disease === "NotConfirmed" || name === "" || email === "" || password === "" || disease==="SelectDisease")) {           // CHECKING IF ALL THE VALUES ARE FILLED
+      let btn = document.getElementById("loginButton");
+      btn.disabled = false;
+    }
+    else{                                                                        // IF NOT FILLED THEN DISABLE THE BUTTON
+      let btn = document.getElementById("loginButton");
+      btn.disabled = true;
+    }
+  }
+
+
 document.querySelector(".myform").addEventListener("change", function (event) {  //detecting change in the form
 
   var options = document.getElementById("disease").value;
@@ -33,6 +51,7 @@ function checkOptionForRed() {           // CHECKING THE OPTION FOR RED COLOR BL
         detect.innerHTML = "You have Protonopia";             // IF WRONG ANSWER THEN SHOW THE DISEASE DETECTED
         let disease = document.getElementById("disease");
         disease.value = "Protonopia";
+        checkform();
         protonopia.style.display = "none";
       } else {                                            // IF RIGHT ANSWER THEN SHOW THE NEXT QUESTION
         detect.innerHTML = "Right Answer";
@@ -61,6 +80,7 @@ function checkOptionForGreen() {                            // CHECKING THE OPTI
         detect.innerHTML = "You have Deuternopia";
         let disease = document.getElementById("disease");
         disease.value = "Deuternopia";
+        checkform();
         deutronopia.style.display = "none";
       } else {                                                      // IF RIGHT ANSWER THEN SHOW THE NEXT QUESTION
         detect.innerHTML = "Right Answer";
@@ -93,6 +113,7 @@ function checkOptionForBlue() {                            // CHECKING THE OPTIO
         detect.innerHTML = "You have Tritonopia";
         let disease = document.getElementById("disease");
         disease.value = "Tritonopia";
+        checkform();
       } else {                                                        // IF RIGHT ANSWER THEN SHOW THE NEXT QUESTION
         detect.innerHTML = "Right Answer";
         deutronopia.style.display = "none";
@@ -106,17 +127,6 @@ function checkOptionForBlue() {                            // CHECKING THE OPTIO
 
 document.querySelector(".buttonBlue").addEventListener("click", checkOptionForBlue);       // ADDING EVENT LISTENER TO THE BUTTON
 
-document.querySelector("#loginPage").addEventListener("change", function (event) {       // DETECTING CHANGE IN THE FORM
-    let disease = document.getElementById("disease").value;                               // GETTING THE VALUES OF THE FORM
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    if (!(disease === "NotConfirmed" || name === "" || email === "" || password === "" || disease==="SelectDisease")) {           // CHECKING IF ALL THE VALUES ARE FILLED
-      let btn = document.getElementById("loginButton");
-      btn.disabled = false;
-    }
-    else{                                                                        // IF NOT FILLED THEN DISABLE THE BUTTON
-      let btn = document.getElementById("loginButton");
-      btn.disabled = true;
-    }
-  });
+
+
+document.getElementById("loginPage").addEventListener("change",checkform);                 // ADDING EVENT LISTENER TO THE FORM 
