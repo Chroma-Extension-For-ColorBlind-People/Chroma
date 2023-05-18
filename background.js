@@ -14,18 +14,35 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {    // CHRO
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {    // CHROME API - onMessage ... EVENT LISTENER FOR MESSAGES 
   if (request.message === "sendData") {                                     // IF MESSAGE IS "sendData" (FROM redierct.js) THEN STORE THE DATA IN CHROME STORAGE
     console.log("Received data from redirect:", request.data);
-    chrome.storage.sync.set({ 'myData': request.data }, function () {
+    chrome.storage.sync.set({ 'myData': request.data,'state': "OFF" }, function () {
       console.log('Data stored: ', request.data);
     });
     sendResponse({ message: "Data received" });
   }
   if (request.message === "Logout") {                                   // IF MESSAGE IS "Logout" (FROM popup.js) THEN REMOVE THE DATA FROM CHROME STORAGE
-    chrome.storage.sync.set({ 'myData': "logout" }, function () {
+    chrome.storage.sync.set({ 'myData': "logout","state": "OFF" }, function () {
       console.log('Data removed');
 
     });
     sendResponse({ message: "Data removed" });
 
+  }
+  if(request.message === "toggle"){
+    chrome.storage.sync.set({ 'state': request.state }, function () {
+      console.log('Data stored: ', request.state);
+    });
+    // chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+    //   chrome.tabs.sendMessage(tabs[0].id, { message: "toggle", state: request.state }, function(response) {
+    //     console.log(response.message);
+    //    });
+    // });
+    
+
+    // chrome.storage.sync.set({ 'myData': "toggle" }, function () {
+    //   console.log('Data removed');
+
+    // });
+    sendResponse({ message: "Data toggeled" });
   }
 });
 

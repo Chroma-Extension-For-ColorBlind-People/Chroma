@@ -1,6 +1,12 @@
 let data = "";
+// state = "OFF";
 chrome.storage.sync.get(["myData"], function (result) {   //GET THE DATA FROM CHROME STORAGE STORED BY BACKGROUND.JS
   data = result.myData;
+  console.log("data:", data);
+});
+chrome.storage.sync.get(["state"], function (result) {   //GET THE DATA FROM CHROME STORAGE STORED BY BACKGROUND.JS
+  state = result.state;
+  console.log("state:", state);
 });
 
 chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //LISTENER FOR CHANGES IN CHROME STORAGE (WHEN USER LOGS OUT)
@@ -12,22 +18,39 @@ chrome.storage.sync.onChanged.addListener(function (changes, namespace) { //LIST
       return;
     }
   });
+  chrome.storage.sync.get(["state"], function (result) {   //GET THE DATA FROM CHROME STORAGE STORED BY BACKGROUND.JS
+    state = result.state;
+    state = state.trim();
+    console.log("state:", state);
+    if (state === "OFF") {
+      clear();
+      return;
+    }
+  });
 });
 
 function clear() {
   for (const element of edited) {
-    const regex =
-      /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g; //REGEX TO MATCH THE BACKGROUND IMAGE
-    let match = style.getPropertyValue("background-image").replace(regex, "");    //REPLACE THE BACKGROUND IMAGE WITH EMPTY STRING
+    console.log("clearing")
+    let background = element.style.backgroundImage;
+    console.log(background);
+    const regex1 = /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g; //REGEX TO MATCH THE BACKGROUND IMAGE
+    let match = element.style.backgroundImage.replace(regex1, "");    //REPLACE THE BACKGROUND IMAGE WITH EMPTY STRING
+    const regex2 = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
+    match = match.replace(regex2, "");
+    match = match.trim();
+    console.log("matches: ",match);
     element.style.backgroundImage = match;
+    edited.delete(element);
   }
+  return;
 }
 const edited = new Set();
 
 function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK THE COLOR OF THE ELEMENT
   //FIRST, SECOND AND THIRD ARE THE INDEXES OF THE RGB VALUES 
   try {
-    if (data === "logout" || data === "") {
+    if (data === "logout" || data === "" || state != "ON") {
       clear();
       data = "";
       return;
@@ -77,16 +100,17 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
         //CONDITIONS TO CHECK THE COLOR OF THE ELEMENT AND CHANGE THE BACKGROUND IMAGE ACCORDINGLY
 
         if (color1 != 0 && color2 == 0 && color3 == 0) {
-          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
+
           // match = match.trim();
 
           if (spaces.test(match)) {
-            match = " , "+match;
-            
+            match = ", " + match;
           }
 
-          element.style.backgroundImage = " repeating-linear-gradient(0deg,transparent,transparent 10px,#000 12px,#000 2px)"+match;
+          element.style.backgroundImage = element.style.backgroundImage.replace(regex, "");
+          element.style.backgroundImage = " repeating-linear-gradient(0deg,transparent,transparent 10px,#000 12px,#000 2px)" + match;
           edited.add(element);
           falg = false;
 
@@ -95,69 +119,77 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
             /repeating-linear-gradient\(\d+deg, transparent, transparent 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           // match = match.trim();
-          
+
           if (spaces.test(match)) {
-            match = " , "+match;
-            
+            match = ", " + match;
           }
-          element.style.backgroundImage = " repeating-linear-gradient(45deg,transparent,transparent 10px,#000 12px,#000 2px)"+match;
+
+          element.style.backgroundImage = element.style.backgroundImage.replace(regex, "");
+          element.style.backgroundImage = " repeating-linear-gradient(45deg,transparent,transparent 10px,#000 12px,#000 2px)" + match;
           edited.add(element);
           falg = false;
 
         } else if (color1 == 0 && color2 != 0 && color3 == 0) {
-          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           // match = match.trim();
-          
+
 
           if (spaces.test(match)) {
-            match = " , "+match;
-            
+            match = ", " + match;
           }
-          element.style.backgroundImage = " repeating-linear-gradient(90deg,transparent,transparent 10px,#000 12px,#000 2px)"+match;
+
+          element.style.backgroundImage = element.style.backgroundImage.replace(regex, "");
+          element.style.backgroundImage = " repeating-linear-gradient(90deg,transparent,transparent 10px,#000 12px,#000 2px)" + match;
           edited.add(element);
           falg = false;
 
         } else if (color2 > color3 / 3 && color1 == 0 && color3 != 0) {
-          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           // match = match.trim();
-          
+
 
           if (spaces.test(match)) {
-            match = " , "+match;
-            
+            match = ", " + match;
           }
-          element.style.backgroundImage = " repeating-linear-gradient(135deg,transparent,transparent 10px,#000 12px,#000 2px)"+match;
+       
+
+          element.style.backgroundImage = element.style.backgroundImage.replace(regex, "");
+          element.style.backgroundImage = " repeating-linear-gradient(135deg,transparent,transparent 10px,#000 12px,#000 2px)" + match;
 
           edited.add(element);
 
           falg = false;
         } else if (Math.abs(color1 - color2) > 20 && color3 == 0) {
-          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           // match = match.trim();
-          
+
 
           if (spaces.test(match)) {
-            match = " , "+match;
-            
+            match = ", " + match;
           }
-          element.style.backgroundImage = " repeating-linear-gradient(30deg,transparent,transparent 10px,#000 12px,#000 2px)"+match;
+        
+
+          element.style.backgroundImage = element.style.backgroundImage.replace(regex, "");
+          element.style.backgroundImage = " repeating-linear-gradient(30deg,transparent,transparent 10px,#000 12px,#000 2px)" + match;
           edited.add(element);
           falg = false;
 
         } else if (Math.abs(color1 - color2) > 20 && color1 != 0) {
-          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+          const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\),/g;
           let match = style.getPropertyValue("background-image").replace(regex, "");
           match = match.trim();
-          
+
 
           if (spaces.test(match)) {
-            match = " , "+match;
-            
+            match = ", " + match;
           }
-          element.style.backgroundImage = " repeating-linear-gradient(110deg,transparent,transparent 10px,#000 12px,#000 2px)"+match;
+         
+
+          element.style.backgroundImage = element.style.backgroundImage.replace(regex, "");
+          element.style.backgroundImage = "repeating-linear-gradient(110deg,transparent,transparent 10px,#000 12px,#000 2px)" + match;
           edited.add(element);
           falg = false;
 
@@ -170,7 +202,7 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
     if (element.style.backgroundImage && falg === true) {   //IF NONE OF THE PROPERTIES SASTISFY THE CONDITIONS THEN REMOVE THE BACKGROUND IMAGE IF IT HAS BEEN CHANGED BEFORE
       let background = style.getPropertyValue("background-image")
       if (background.includes("repeating-linear-gradient") && background.includes("transparent, transparent 10px, rgb(0, 0, 0) 12px, rgb(0, 0, 0) 2px")) {
-        const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)/g;
+        const regex = /repeating-linear-gradient\(\d+deg, rgba\(0, 0, 0, 0\), rgba\(0, 0, 0, 0\) 10px, rgb\(0, 0, 0\) 12px, rgb\(0, 0, 0\) 2px\)\,/g;
         let match = background.replace(regex, "");
         edited.delete(element);
         element.style.backgroundImage = match;
@@ -183,13 +215,13 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
 
 (() => {
   chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {    //LISTENER FOR MESSAGES FROM BACKGROUND.JS
-    if (request.message != "hello") {
+    if (request.message === "hello") {
       console.log("url: ", request.message);
 
       sendResponse({ message: "hi" });
     }
     try {
-      if (data) {                 //CHECK IF THE DATA HAS BEEN RECEIVED FROM THE BACKGROUND.JS
+      if (data && state === "ON") {                 //CHECK IF THE DATA HAS BEEN RECEIVED FROM THE BACKGROUND.JS
         let diseasecheck1 = 0;
         let diseasecheck2 = 1;
         let diseasecheck3 = 2;
@@ -252,7 +284,8 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
             }
           }
           isCheckingColor = true;
-          if (data === "logout") {   //CHECK IF THE USER HAS LOGGED OUT
+          if (data === "logout" && state != "ON") {   //CHECK IF THE USER HAS LOGGED OUT
+            observer.disconnect();
             clear();
             data = "";
             return;
