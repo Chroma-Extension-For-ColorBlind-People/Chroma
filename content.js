@@ -272,13 +272,6 @@ function checkcolor(element, first, second, third) {      //FUNCTION TO CHECK TH
                 catch (error) {
                   console.log(error);
                 }
-                // let elements = mutations[i].target.querySelectorAll("*");    //GET ALL THE ELEMENTS IN THE MUTATION
-                // for (let j = 0; j < elements.length; j++) {      //LOOP THROUGH THE ELEMENTS TO GET THE BODY ELEMENT
-
-                //   checkcolor(elements[j], diseasecheck1, diseasecheck2, diseasecheck3);
-
-                // }
-                // checkedelements.push(mutations[i].target);
               }
             }
           }
