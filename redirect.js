@@ -9,6 +9,9 @@ function showAlert(message) {
 // GETTING THE DATA FROM THE FORM AND SENDING IT TO THE SERVER AND THEN RECEIVING THE RESPONSE
 document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
+  let button = document.getElementById("loginButton");
+  button.disabled = true;
+  button.style.pointerEvents = "none";
   var xhr = new XMLHttpRequest(); // NEW XMLHTTPREQUEST OBJECT
   xhr.open("POST", "http://chroma.ap-1.evennode.com/"); // OPENING A CONNECTION (URL OF THE SERVER TO SEND DATA)
   xhr.setRequestHeader("Content-Type", "application/json"); // SETTING THE HEADER OF THE REQUEST
